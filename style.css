@@ -1,0 +1,231 @@
+/* 定义颜色变量 - 保持浅色主题 */
+:root {
+    --color-primary: #00bcd4;
+    --color-secondary: #0097a7;
+    --color-light-bg: #f7fafd;
+    --color-dark-text: #222831;
+    --color-text-sub: #6c757d;
+    --color-card-bg: #ffffffcc;
+    --color-border: #e3e8ee;
+    --color-blur-bg: rgba(255, 255, 255, 0.7);
+    --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.08);
+    --shadow-hover: 0 16px 32px rgba(0, 188, 212, 0.10);
+    --font-main: 'Inter', 'Arial', sans-serif;
+    --radius-lg: 16px;
+    --radius-md: 8px;
+    --transition: all 0.3s cubic-bezier(.4, 2, .3, 1);
+}
+
+body {
+    font-family: var(--font-main);
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(120deg, #e0f7fa 0%, #f7fafd 100%);
+    color: var(--color-dark-text);
+    overflow-x: hidden;
+    letter-spacing: 0.01em;
+    font-size: 18px;
+}
+
+/* --- Hero Section 样式：实现高级透明背景的关键 --- */
+.hero {
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    background: radial-gradient(ellipse 80% 60% at 50% 30%, rgba(0, 188, 212, 0.10) 0%, rgba(255, 255, 255, 0.85) 80%, var(--color-light-bg) 100%);
+    backdrop-filter: blur(2px);
+    box-shadow: 0 4px 32px rgba(0, 188, 212, 0.04);
+    border-radius: var(--radius-lg);
+    margin: 32px 0 0 0;
+}
+
+/* ... 其他样式保持不变 ... */
+
+/* 移除霓虹发光效果 */
+.hero h1 {
+    font-size: 3.5em;
+    margin-bottom: 0.3em;
+    /* 使用深色文字 */
+    color: var(--color-dark-text);
+    /* 移除霓虹发光 */
+    text-shadow: none;
+}
+
+.hero p {
+    font-size: 1.2em;
+    margin-bottom: 1.5em;
+    /* 更改为次要文字颜色 */
+    color: var(--color-text-sub);
+}
+
+/* 导航栏：透明背景，浅色边框 */
+.navbar {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding: 20px 50px;
+    background: var(--color-blur-bg);
+    border-bottom: 1px solid var(--color-border);
+    box-shadow: 0 2px 12px rgba(0, 188, 212, 0.04);
+    z-index: 20;
+    backdrop-filter: blur(8px);
+}
+
+.logo {
+    font-size: 2em;
+    font-weight: 700;
+    color: var(--color-primary);
+    letter-spacing: 2.5px;
+    text-shadow: 0 2px 8px rgba(0, 188, 212, 0.08);
+}
+
+/* 🌟 CTA 按钮：简洁、高对比度 🌟 */
+.cta-button {
+    display: inline-block;
+    padding: 16px 48px;
+    background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.15em;
+    font-weight: 700;
+    border-radius: var(--radius-md);
+    transition: var(--transition);
+    box-shadow: 0 4px 24px rgba(0, 188, 212, 0.10);
+    position: relative;
+    overflow: hidden;
+    border: none;
+    cursor: pointer;
+    letter-spacing: 0.05em;
+}
+
+.cta-button:hover {
+    background: linear-gradient(90deg, #0097a7 0%, #00bcd4 100%);
+    box-shadow: 0 8px 32px rgba(0, 188, 212, 0.18);
+    transform: scale(1.04) translateY(-2px);
+}
+
+/* 装饰性元素全部移除 */
+.pulse-effect,
+.hero::before {
+    display: none;
+}
+
+/* --- Features Section (优势网格) --- */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+    padding: 96px 5vw;
+    text-align: center;
+    background: var(--color-light-bg);
+    border-radius: var(--radius-lg);
+}
+
+.feature-card {
+    background: var(--color-card-bg);
+    padding: 36px 28px;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-card);
+    transition: var(--transition);
+    backdrop-filter: blur(6px);
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-card:hover {
+    transform: scale(1.03) translateY(-8px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--color-primary);
+    background: linear-gradient(120deg, #e0f7fa 0%, #fff 100%);
+}
+
+.feature-card i {
+    font-size: 3em;
+    color: var(--color-primary);
+    margin-bottom: 18px;
+    text-shadow: 0 2px 8px rgba(0, 188, 212, 0.08);
+}
+
+.feature-card h3 {
+    color: var(--color-dark-text);
+    margin-top: 0;
+    font-size: 1.35em;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+/* 强调“穿透封锁”的卡片样式 (简化) */
+.features-grid .feature-card:first-child h3 {
+    color: var(--color-dark-text);
+    /* 标题使用深色 */
+}
+
+/* --- Footer --- */
+footer {
+    text-align: center;
+    padding: 32px 0 16px 0;
+    border-top: 1px solid var(--color-border);
+    color: var(--color-text-sub);
+    font-size: 0.95em;
+    background: var(--color-blur-bg);
+    backdrop-filter: blur(4px);
+    box-shadow: 0 -2px 12px rgba(0, 188, 212, 0.04);
+}
+
+/* 页脚链接样式 */
+footer a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color 0.3s cubic-bezier(.4, 2, .3, 1);
+    font-weight: 500;
+}
+
+footer a:hover {
+    color: #0097a7;
+}
+
+/* 响应式优化 */
+@media (max-width: 900px) {
+    .features-grid {
+        padding: 48px 2vw;
+        gap: 24px;
+    }
+
+    .feature-card {
+        padding: 24px 10px;
+    }
+
+    .navbar {
+        padding: 12px 16px;
+    }
+
+    .hero {
+        margin-top: 0;
+        min-height: 40vh;
+    }
+}
+
+@media (max-width: 600px) {
+    body {
+        font-size: 16px;
+    }
+
+    .hero h1 {
+        font-size: 2em;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+        padding: 24px 2vw;
+    }
+
+    .navbar {
+        padding: 8px 8px;
+    }
+}
